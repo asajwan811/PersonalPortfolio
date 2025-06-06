@@ -21,11 +21,12 @@ export function Navigation() {
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
     setIsMenuOpen(false);
@@ -36,20 +37,24 @@ export function Navigation() {
     { label: "Skills", href: "skills" },
     { label: "Projects", href: "projects" },
     { label: "Experience", href: "experience" },
-    { label: "Contact", href: "contact" }
+    { label: "Contact", href: "contact" },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 border-b border-border transition-all duration-300 ${
-      isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-background/80 backdrop-blur-sm"
-    }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 border-b border-border transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-md"
+          : "bg-background/80 backdrop-blur-sm"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
             <i className="fas fa-coffee text-java-orange text-xl"></i>
-            <span className="font-bold text-xl">Alex Chen</span>
+            <span className="font-bold text-xl">Abhinavjeet Singh</span>
           </div>
-          
+
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <button
@@ -61,7 +66,7 @@ export function Navigation() {
               </button>
             ))}
           </div>
-          
+
           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
@@ -86,7 +91,7 @@ export function Navigation() {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-background border-t border-border">
