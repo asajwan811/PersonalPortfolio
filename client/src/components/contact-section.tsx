@@ -10,7 +10,7 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  // You'll need to replace this with your actual Formspree endpoint
+  // Replace YOUR_FORM_ID with your actual Formspree form ID
   const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/YOUR_FORM_ID";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
