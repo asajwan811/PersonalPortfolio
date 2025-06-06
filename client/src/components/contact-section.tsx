@@ -10,47 +10,81 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  // You'll need to replace this with your actual Formspree endpoint
+  const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/YOUR_FORM_ID";
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const subject = formData.get('subject') as string;
-    const message = formData.get('message') as string;
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
 
     if (!name || !email || !message) {
       toast({
         title: "Error",
         description: "Please fill in all required fields.",
-        variant: "destructive"
+        variant: "destructive",
       });
       setIsSubmitting(false);
       return;
     }
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon!"
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+          _replyto: email,
+        }),
       });
-      (e.target as HTMLFormElement).reset();
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon!"
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact me directly via email.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-java-orange/5 to-java-blue/5">
+    <section
+      id="contact"
+      className="py-20 bg-gradient-to-br from-java-orange/5 to-java-blue/5"
+    >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Let's Build Something Amazing</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            Let's Build Something Amazing
+          </h2>
           <p className="text-xl text-muted-foreground">
-            Ready to discuss your next Java project? Let's connect and turn your ideas into robust solutions.
+            Ready to discuss your next Java project? Let's connect and turn your
+            ideas into robust solutions.
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
@@ -63,7 +97,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <div className="font-medium">Email</div>
-                    <div className="text-muted-foreground">alex.chen@example.com</div>
+                    <div className="text-muted-foreground">
+                      abhinavjeetsingh9@gmail.com
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -72,7 +108,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <div className="font-medium">LinkedIn</div>
-                    <div className="text-muted-foreground">linkedin.com/in/alexchen</div>
+                    <div className="text-muted-foreground">
+                      linkedin.com/in/abhinavj33t
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -81,12 +119,14 @@ export function ContactSection() {
                   </div>
                   <div>
                     <div className="font-medium">GitHub</div>
-                    <div className="text-muted-foreground">github.com/alexchen</div>
+                    <div className="text-muted-foreground">
+                      github.com/asajwan811
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <Card className="shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-3 mb-4">
@@ -94,56 +134,57 @@ export function ContactSection() {
                   <h4 className="font-semibold text-lg">Coffee Chat?</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  I'm always excited to discuss Java, architecture patterns, or just chat about the latest in tech over a virtual coffee!
+                  I'm always excited to discuss Java, architecture patterns, or
+                  just chat about the latest in tech over a virtual coffee!
                 </p>
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Contact Form */}
           <Card className="shadow-lg">
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <Label htmlFor="name">Name</Label>
-                  <Input 
-                    id="name" 
-                    name="name" 
+                  <Input
+                    id="name"
+                    name="name"
                     placeholder="Your Name"
                     className="mt-2"
                   />
                 </div>
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
+                  <Input
+                    type="email"
+                    id="email"
+                    name="email"
                     placeholder="your.email@example.com"
                     className="mt-2"
                   />
                 </div>
                 <div>
                   <Label htmlFor="subject">Subject</Label>
-                  <Input 
-                    id="subject" 
-                    name="subject" 
+                  <Input
+                    id="subject"
+                    name="subject"
                     placeholder="Project Discussion"
                     className="mt-2"
                   />
                 </div>
                 <div>
                   <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    id="message" 
-                    name="message" 
+                  <Textarea
+                    id="message"
+                    name="message"
                     rows={4}
                     placeholder="Tell me about your project..."
                     className="mt-2"
                   />
                 </div>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-java-orange hover:bg-java-orange-light text-white"
                 >
