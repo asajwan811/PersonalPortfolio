@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 25 95% 53%; /* Java Orange */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  
+  /* Custom Java-themed colors */
+  --java-orange: 25 95% 53%; /* #ED8B00 */
+  --java-orange-light: 33 96% 56%; /* #F89820 */
+  --java-blue: 209 37% 45%; /* #5382A1 */
+  --java-blue-light: 212 39% 48%; /* #4F7CAC */
+  --coffee: 25 86% 27%; /* #8B4513 */
+  --coffee-light: 25 69% 40%; /* #A0522D */
+}
+
+.dark {
+  --background: 222 84% 5%; /* #0F0F23 */
+  --foreground: 210 40% 98%;
+  --muted: 217 32% 17%;
+  --muted-foreground: 215 20% 65%;
+  --popover: 222 84% 5%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222 84% 5%;
+  --card-foreground: 210 40% 98%;
+  --border: 217 32% 17%;
+  --input: 217 32% 17%;
+  --primary: 25 95% 53%; /* Java Orange */
+  --primary-foreground: 222 84% 5%;
+  --secondary: 217 32% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 217 32% 17%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 212 72% 59%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-java-orange {
+    color: hsl(var(--java-orange));
+  }
+  
+  .text-java-orange-light {
+    color: hsl(var(--java-orange-light));
+  }
+  
+  .text-java-blue {
+    color: hsl(var(--java-blue));
+  }
+  
+  .text-java-blue-light {
+    color: hsl(var(--java-blue-light));
+  }
+  
+  .text-coffee {
+    color: hsl(var(--coffee));
+  }
+  
+  .text-coffee-light {
+    color: hsl(var(--coffee-light));
+  }
+  
+  .bg-java-orange {
+    background-color: hsl(var(--java-orange));
+  }
+  
+  .bg-java-orange-light {
+    background-color: hsl(var(--java-orange-light));
+  }
+  
+  .bg-java-blue {
+    background-color: hsl(var(--java-blue));
+  }
+  
+  .bg-coffee {
+    background-color: hsl(var(--coffee));
+  }
+  
+  .border-java-orange {
+    border-color: hsl(var(--java-orange));
+  }
+  
+  .hover\:bg-java-orange:hover {
+    background-color: hsl(var(--java-orange));
+  }
+  
+  .hover\:bg-java-orange-light:hover {
+    background-color: hsl(var(--java-orange-light));
+  }
+  
+  .hover\:text-java-orange:hover {
+    color: hsl(var(--java-orange));
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Backdrop blur support */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
