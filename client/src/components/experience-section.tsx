@@ -5,30 +5,30 @@ export function ExperienceSection() {
   const experiences = [
     {
       period: "2022 - Present",
-      title: "Senior Java Developer",
-      company: "TechCorp Solutions",
-      description: "Leading a team of 5 developers in architecting microservices-based solutions. Improved system performance by 40% and reduced deployment time by 60%.",
-      skills: ["Spring Boot", "Kubernetes", "AWS"],
+      title: "Learning Phase",
+      company: "",
+      description: "Keen on mastering Java and its ecosystem, focusing on Spring Boot, microservices, and cloud technologies.",
+      skills: ["Spring Boot", "Docker", "Cloud Services"],
       icon: "fas fa-user-tie",
       color: "bg-java-orange",
       textColor: "text-java-orange"
     },
     {
-      period: "2019 - 2022",
-      title: "Java Developer",
-      company: "Enterprise Systems Inc.",
-      description: "Developed and maintained enterprise Java applications serving 10K+ users. Implemented RESTful APIs and optimized database queries resulting in 50% faster response times.",
-      skills: ["Spring MVC", "PostgreSQL", "Redis"],
+      period: "June 2023 - August 2023",
+      title: "Java Developer Intern",
+      company: "Solitaire Infosys.",
+      description: "Developed 3+ scalable web application using Spring Boot and Hibernate, reducing server response time by 25%.",
+      skills: ["Spring MVC", "MySQL", "Hibernate"],
       icon: "fas fa-code",
       color: "bg-java-blue",
       textColor: "text-java-blue"
     },
     {
-      period: "2016 - 2019",
-      title: "Junior Java Developer",
-      company: "StartupTech",
-      description: "Started my Java journey building web applications with Spring Framework. Collaborated with cross-functional teams to deliver features on tight deadlines.",
-      skills: ["Core Java", "Spring", "MySQL"],
+      period: "2021 - 2022",
+      title: "Started my Bachelors in Engineering as well as my Java Journey. ",
+      company: "Chandigarh University",
+      description: "Started my Java journey building console-based java applications using OOPS.",
+      skills: ["Core Java", "OOPS", "MySQL"],
       icon: "fas fa-laptop-code",
       color: "bg-coffee",
       textColor: "text-coffee"
@@ -41,7 +41,7 @@ export function ExperienceSection() {
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">Professional Journey</h2>
           <p className="text-xl text-muted-foreground">
-            8+ years of progressive experience in Java development and system architecture
+            3+ years of progressive experience in Java development and system architecture
           </p>
         </div>
         

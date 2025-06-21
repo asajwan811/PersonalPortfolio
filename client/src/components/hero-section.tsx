@@ -23,7 +23,7 @@ export function HeroSection() {
             <div className="space-y-4">
               <div className="flex items-center space-x-2 text-java-orange font-medium">
                 <i className="fas fa-code"></i>
-                <span>Senior Java Developer</span>
+                <span>Java Developer</span>
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 Building Robust{" "}
@@ -31,7 +31,7 @@ export function HeroSection() {
                 Solutions
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                8+ years crafting scalable Java applications with Spring Boot, microservices architecture, 
+                3+ years crafting scalable Java applications with Spring Boot, microservices architecture, 
                 and cloud-native technologies. Passionate about clean code and system optimization.
               </p>
             </div>
@@ -55,13 +55,16 @@ export function HeroSection() {
             </div>
             
             <div className="flex items-center space-x-6 pt-4">
-              <a href="#" className="text-muted-foreground hover:text-java-orange text-xl transition-colors duration-200">
+              <a href="https://github.com/asajwan811" target="_blank" 
+    rel="noopener noreferrer" className="text-muted-foreground hover:text-java-orange text-xl transition-colors duration-200">
                 <i className="fab fa-github"></i>
               </a>
-              <a href="#" className="text-muted-foreground hover:text-java-orange text-xl transition-colors duration-200">
+              <a href="https://www.linkedin.com/in/abhinavj33t/" target="_blank" 
+    rel="noopener noreferrer" className="text-muted-foreground hover:text-java-orange text-xl transition-colors duration-200">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="#" className="text-muted-foreground hover:text-java-orange text-xl transition-colors duration-200">
+              <a href="mailto:abhinavjeetsingh9@gmail.com" target="_blank" 
+    rel="noopener noreferrer" className="text-muted-foreground hover:text-java-orange text-xl transition-colors duration-200">
                 <i className="fas fa-envelope"></i>
               </a>
             </div>

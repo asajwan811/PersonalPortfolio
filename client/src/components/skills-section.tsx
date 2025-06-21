@@ -6,8 +6,8 @@ export function SkillsSection() {
     {
       icon: "fab fa-java",
       title: "Core Java",
-      description: "Java 17+, JVM Optimization, Multithreading",
-      proficiency: 95,
+      description: "Java 17+, Multithreading",
+      proficiency: 80,
       color: "text-java-orange",
       bgColor: "bg-java-orange/10"
     },
@@ -15,15 +15,15 @@ export function SkillsSection() {
       icon: "fas fa-leaf",
       title: "Spring Ecosystem",
       description: "Spring Boot, Security, Data JPA",
-      proficiency: 92,
+      proficiency: 70,
       color: "text-green-500",
       bgColor: "bg-green-500/10"
     },
     {
       icon: "fas fa-cubes",
-      title: "Microservices",
-      description: "Docker, Kubernetes, Service Mesh",
-      proficiency: 88,
+      title: "Database & Microservices",
+      description: "MySQL, Docker, Hibernate",
+      proficiency: 70,
       color: "text-blue-500",
       bgColor: "bg-blue-500/10"
     },
@@ -31,7 +31,7 @@ export function SkillsSection() {
       icon: "fas fa-cloud",
       title: "Cloud & DevOps",
       description: "AWS, CI/CD, Infrastructure as Code",
-      proficiency: 85,
+      proficiency: 30,
       color: "text-purple-500",
       bgColor: "bg-purple-500/10"
     }
@@ -41,9 +41,9 @@ export function SkillsSection() {
     { icon: "fab fa-java", name: "Java", color: "text-java-orange" },
     { icon: "fas fa-leaf", name: "Spring", color: "text-green-500" },
     { icon: "fab fa-docker", name: "Docker", color: "text-blue-500" },
-    { icon: "fab fa-aws", name: "AWS", color: "text-orange-500" },
-    { icon: "fas fa-database", name: "PostgreSQL", color: "text-gray-600 dark:text-gray-400" },
-    { icon: "fas fa-fire", name: "Redis", color: "text-red-500" }
+    { icon: "fa-regular fa-list-check", name: "Hibernate", color: "text-orange-500" },
+    { icon: "fas fa-database", name: "MySQL", color: "text-gray-600 dark:text-gray-400" },
+    { icon: "fa-solid fa-lock", name: "Security", color: "text-gray-600 dark:text-gray-400" }
   ];
 
   return (

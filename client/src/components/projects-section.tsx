@@ -13,38 +13,41 @@ export function ProjectsSection() {
       tags: ["Spring Boot", "MySQL", "JDBC", "OAuth 2.0"],
       year: "2025",
       badge: {
-        text: "Enterprise Grade",
+        text: "Enterprise Ready",
         icon: "fas fa-star",
         color: "bg-yellow-400",
       },
+      githubUrl: "https://github.com/asajwan811/SCM.git"
     },
     {
-      title: "Financial API Gateway",
+      title: "Hospital Database Management System",
       description:
-        "High-performance API gateway processing 1M+ requests/day with OAuth 2.0, rate limiting, and comprehensive monitoring.",
+        "Robust management system to streamline patient records, and appointments for efficient healthcare delivery.",
       image:
         "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      tags: ["Spring Gateway", "OAuth 2.0", "AWS", "Kubernetes"],
-      year: "2023",
+      tags: ["Spring Boot", "OOPS", "Hibernate", "MySQL"],
+      year: "2024",
       badge: {
-        text: "High Security",
+        text: "Secure & Scalable",
         icon: "fas fa-shield-alt",
         color: "bg-green-400",
       },
+      githubUrl: "https://github.com/asajwan811/hospital-management-system-using-spring-boot-master.git"
     },
     {
-      title: "Real-time Analytics Engine",
+      title: "Backend of IRCTC",
       description:
-        "Real-time data processing engine using Apache Kafka and Spring WebFlux for streaming analytics with sub-second latency.",
+        "A console-based IRCTC ticket booking system in Java, ticket booking, cancellation, email verification, and ticket generation.",
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      tags: ["Spring WebFlux", "Apache Kafka", "Elasticsearch", "MongoDB"],
-      year: "2023",
+      tags: ["Java", "OOPS", "Data Structures", "CLI"],
+      year: "2024",
       badge: {
         text: "Real-time",
         icon: "fas fa-bolt",
         color: "bg-java-orange",
       },
+      githubUrl: "https://github.com/asajwan811/Backend-of-irctc-ticket-Generator.git"
     },
   ];
 
@@ -77,16 +80,13 @@ export function ProjectsSection() {
                   <h3 className="text-xl font-bold">{project.title}</h3>
                   <div className="flex space-x-2">
                     <a
-                      href="#"
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-java-orange transition-colors duration-200"
+                      title="View on GitHub"
                     >
                       <i className="fab fa-github"></i>
-                    </a>
-                    <a
-                      href="#"
-                      className="text-muted-foreground hover:text-java-orange transition-colors duration-200"
-                    >
-                      <i className="fas fa-external-link-alt"></i>
                     </a>
                   </div>
                 </div>
@@ -121,13 +121,19 @@ export function ProjectsSection() {
         </div>
 
         <div className="text-center mt-12">
-          <Button
-            variant="outline"
-            className="border-java-orange text-java-orange hover:bg-java-orange hover:text-white px-8 py-3"
+          <a 
+            href="https://github.com/asajwan811/" 
+            target="_blank" 
+            rel="noopener noreferrer"
           >
-            <i className="fab fa-github mr-2"></i>
-            View All Projects on GitHub
-          </Button>
+            <Button
+              variant="outline"
+              className="border-java-orange text-java-orange hover:bg-java-orange hover:text-white px-8 py-3"
+            >
+              <i className="fab fa-github mr-2"></i>
+              View All Projects on GitHub
+            </Button>
+          </a>
         </div>
       </div>
     </section>
