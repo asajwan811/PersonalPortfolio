@@ -16,6 +16,16 @@ export function ExperienceSection() {
 
   const experiences = [
     {
+      period: "June 2025 - Aug 2025",
+      title: "Web Developer Internship",
+      company: "Oxizun",
+      description: "Keen on mastering MERN stack, focusing on ReactJs, PHP, and Javascript.",
+      skills: ["Javascript", "ReactJs", "PHP"],
+      icon: "fa-solid fa-building-user",
+      color: "bg-java-orange",
+      textColor: "text-java-orange"
+    },
+    {
       period: "2022 - Present",
       title: "Learning Phase",
       company: "",
