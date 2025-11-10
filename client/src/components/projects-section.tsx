@@ -17,6 +17,21 @@ export function ProjectsSection() {
 
   const projects = [
     {
+      title: "AI-Powered Invoice Management System",
+      description:
+        "A full-stack invoice management application with AI integration for automated data extraction, reminder generation, and financial insights.",
+      image:
+        "https://plus.unsplash.com/premium_photo-1679177183775-75c2e0d0d209?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzN8fGxhcHRvcCUyMHdpdGglMjBnYW1pbmclMjBrZXlib2FyZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=800&h=400",
+      tags: ["React", "Node.js", "MongoDB", "AI Integration", "Tailwind CSS"],
+      year: "2024",
+      badge: {
+        text: "AI-Powered",
+        icon: "fas fa-robot",
+        color: "bg-purple-500",
+      },
+      githubUrl: "https://github.com/asajwan811/AiInvoiceGen.git"
+    },
+    {
       title: "Smart Contact Manager",
       description:
         "Spring Boot contact manager with OAuth2 auth, Spring Security RBAC & JDBC persistence for multi-user contacts.",
