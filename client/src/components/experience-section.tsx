@@ -32,7 +32,7 @@ export function ExperienceSection() {
       description: "Keen on mastering Java and its ecosystem, focusing on Spring Boot, microservices, and cloud technologies.",
       skills: ["Spring Boot", "Docker", "Cloud Services"],
       icon: "fas fa-user-tie",
-      color: "bg-java-orange",
+      color: "bg-java-gray",
       textColor: "text-java-orange"
     },
     {
