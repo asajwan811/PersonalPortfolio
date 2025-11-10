@@ -1,8 +1,20 @@
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+// Register ScrollTrigger plugin if not already registered
+gsap.registerPlugin(ScrollTrigger);
+
 export function ProjectsSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+
   const projects = [
     {
       title: "Smart Contact Manager",
@@ -51,24 +63,98 @@ export function ProjectsSection() {
     },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate section title and subtitle
+      gsap.fromTo([titleRef.current, subtitleRef.current], 
+        { y: 30, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Animate project cards with stagger
+      gsap.fromTo(".project-card", 
+        { y: 50, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: projectsRef.current,
+            start: "top 75%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Animate view all button
+      gsap.fromTo(buttonRef.current, 
+        { y: 20, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: buttonRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Add hover animation to project cards
+      const projectCards = gsap.utils.toArray(".project-card");
+      projectCards.forEach((card: any) => {
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, {
+            y: -10,
+            duration: 0.3,
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+          });
+        });
+        
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            y: 0,
+            duration: 0.3,
+            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+          });
+        });
+      });
+    }, sectionRef);
+    
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="projects" className="py-20 bg-muted/30">
+    <section ref={sectionRef} id="projects" className="py-20 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+          <h2 ref={titleRef} className="text-3xl lg:text-4xl font-bold mb-4">
             Featured Projects
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p ref={subtitleRef} className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Showcase of enterprise-grade Java applications demonstrating
             scalability, performance, and best practices
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div ref={projectsRef} className="grid lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="project-card overflow-hidden transition-all duration-300"
             >
               <img
                 src={project.image}
@@ -122,6 +208,7 @@ export function ProjectsSection() {
 
         <div className="text-center mt-12">
           <a 
+            ref={buttonRef}
             href="https://github.com/asajwan811/" 
             target="_blank" 
             rel="noopener noreferrer"

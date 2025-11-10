@@ -1,11 +1,101 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState("");
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const contactInfoRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const formElementsRef = useRef<HTMLFormElement>(null);
 
   // Replace YOUR_FORM_ID with your actual Formspree form ID
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/manjqqgj";
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Animate heading
+      gsap.fromTo(
+        headingRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+
+      // Animate contact info
+      gsap.fromTo(
+        contactInfoRef.current,
+        { x: -50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: contactInfoRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+
+      // Animate form container
+      gsap.fromTo(
+        formRef.current,
+        { x: 50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+
+      // Animate form elements with stagger
+      if (formElementsRef.current) {
+        const formElements = formElementsRef.current.querySelectorAll(
+          "div:not(:last-child)"
+        );
+        gsap.fromTo(
+          formElements,
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: formElementsRef.current,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,7 +138,7 @@ export function ContactSection() {
     } catch (error) {
       console.error("Error sending message:", error);
       setFormStatus(
-        "Failed to send message. Please try again or contact me directly via email.",
+        "Failed to send message. Please try again or contact me directly via email."
       );
     } finally {
       setIsSubmitting(false);
@@ -57,11 +147,12 @@ export function ContactSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="contact"
       className="py-20 bg-gradient-to-br from-orange-50 to-blue-50 dark:from-gray-900 dark:to-gray-800"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={headingRef} className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
             Let's Build Something Amazing
           </h2>
@@ -73,7 +164,7 @@ export function ContactSection() {
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div ref={contactInfoRef} className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
                 Get In Touch
@@ -136,8 +227,8 @@ export function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div ref={formRef} className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+            <form ref={formElementsRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
